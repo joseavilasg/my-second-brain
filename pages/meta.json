@@ -1,8 +1,8 @@
 {
   "index": "Introduction",
+  "linux": "Linux",
   "get-started": "Get Started",
   "features": "Features",
   "themes": "Themes",
-  "advanced": "Advanced",
-  "linux": "Linux"
+  "advanced": "Advanced"
 }
