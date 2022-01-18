@@ -52,6 +52,22 @@ Example config file for Apache
 </VirtualHost>
 ```
 
+Example config file for Nginx (not sure)
+
+```plaintext
+    server    {
+        listen 80;
+
+        root /var/www/test_domain.com/html;
+        index index.html index.htm index.nginx.debian.html;
+
+        server_name test_domain.com www.test_domain.com;
+        location /          {
+            try_files $uri $uri/ =404;
+        }
+    }
+```
+
 Enable apache mods
 
 ```bash
@@ -117,6 +133,7 @@ Select the appropriate numbers separated by commas and/or spaces, or leave input
 ```
 
 Choose redirect options
+
 ```bash
 Please choose whether or not to redirect HTTP traffic to HTTPS, removing HTTP access.
 
