@@ -1,6 +1,7 @@
 {
-  "index": "Introduction",
   "linux": "Linux",
+  "javascript": "JavaScript",
+  "index": "Introduction",
   "get-started": "Get Started",
   "features": "Features",
   "themes": "Themes",
