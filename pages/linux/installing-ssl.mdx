@@ -1,0 +1,134 @@
+# Installing SSL in Ubuntu
+
+Installing SSL in Ubuntu
+
+## Installing Apache
+
+```bash
+sudo add-apt-repository ppa:ondrej/apache2
+sudo apt update && sudo apt-get install apache2 -y
+sudo apache2ctl -v
+```
+
+## Installing Certbot
+
+```bash
+sudo add-apt-repository ppa:certbot/certbot
+sudo apt update
+sudo apt install certbot python3-certbot-apache -y
+which certbot
+```
+
+If the above fails, execute this:
+
+```bash
+sudo apt-add-repository -r ppa:certbot/certbot
+sudo apt update
+sudo apt-get update
+```
+
+## Configuring Apache Virtual Host
+
+Example config file for Apache
+
+```plaintext
+<VirtualHost *:80>
+    ServerAdmin admin@example.com
+    ServerName www.example.com
+    ServerAlias www.example.com
+    ProxyRequests off
+
+    <Proxy *>
+            Order deny,allow
+            Allow from all
+    </Proxy>
+
+    <Location />
+            ProxyPass http://localhost:3000/
+            ProxyPassReverse http://localhost:3000/
+    </Location>
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+```
+
+Enable apache mods
+
+```bash
+sudo a2enmod proxy
+sudo a2enmod proxy_http
+```
+
+Test configuration
+
+```bash
+sudo apache2ctl configtest
+```
+
+Reload apache
+
+```bash
+sudo service apache2 reload
+```
+
+## Getting SSl Let's Encrypt
+
+Init Cerbot CLI
+
+```bash
+sudo certbot --apache
+```
+
+Insert email
+
+```bash
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Plugins selected: Authenticator apache, Installer apache Enter email address (used for urgent renewal and security notices)
+
+(Enter 'c' to cancel): hello@gmail.com
+```
+
+Type A
+
+```bash
+Please read the Terms of Service at
+https://letsencrypt.org/documents/LE-SA-v1.2-November-15-2017.pdf. You must agree in order to register with the ACME server at https://acme-v02.api.letsencrypt.org/directory
+
+(A)gree/(C)ancel: A
+```
+
+Type Y
+
+```bash
+Would you be willing to share your email address with the Electronic Frontier Foundation, a founding partner of the Let's Encrypt project and the non-profit organization that develops Certbot? We'd like to send you email about our work encrypting the web, EFF news, campaigns, and ways to support digital freedom.
+
+(Y)es/(N)o: Y
+```
+
+Select domains to generate SSL
+
+```bash
+Which names would you like to activate HTTPS for?
+
+ 1: example.com
+ 2: www.example.com
+
+Select the appropriate numbers separated by commas and/or spaces, or leave input blank to select all options shown (Enter 'c' to cancel):
+```
+
+Choose redirect options
+```bash
+Please choose whether or not to redirect HTTP traffic to HTTPS, removing HTTP access.
+
+ 1: No redirect - Make no further changes to the webserver configuration.
+ 2: Redirect - Make all requests redirect to secure HTTPS access. Choose this for new sites, or if you're confident your site works on HTTPS. You can undo this change by editing your web server's configuration.
+
+Select the appropriate number [1-2] then [enter] (press 'c' to cancel): 2
+```
+
+## Automaticaly renewal certificate
+
+```bash
+crontab -e
+@daily /usr/bin/certbot renew >> /var/log/letsencrypt-renew.log
+```
