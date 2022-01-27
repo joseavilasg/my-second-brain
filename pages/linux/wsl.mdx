@@ -1,0 +1,33 @@
+# WSL
+WSL
+
+## Exporting image
+
+```bash
+wsl --export <Image Name> <Export location file name.tar>
+```
+Example:
+```bash
+wsl --export Ubuntu-20.04 C:/WSL/Ubuntu.tar
+```
+
+## Importing image
+
+```bash
+wsl --import <Image Name> <Directory where you want to store the imported image> <Directory where the exported .tar file exists>
+```
+Example:
+```bash
+wsl --import Ubuntu-20.04 D:/WSL C:/WSL/Ubuntu.tar
+```
+
+## Setting Windows Terminal Up
+For: Línea de comandos
+```bash
+wsl.exe -d Ubuntu20.04 -u joseavila
+```
+
+For: Directorio de Inicio
+```bash
+/home/joseavila
+```
