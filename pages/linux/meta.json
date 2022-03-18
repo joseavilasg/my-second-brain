@@ -2,5 +2,5 @@
   "installing-ssl": "Installing SSL",
   "installing-nvm": "Installing NVM",
   "check-memory": "Check Memory Usage",
-  "WSL": "WSL"
+  "wsl": "WSL"
 }
