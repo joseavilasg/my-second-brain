@@ -4,3 +4,7 @@ const withNextra = require('nextra')({
   unstable_staticImage: true,
 })
 module.exports = withNextra()
+module.exports.images = {
+  ...module.exports,
+  domains: ['spblog.net'],
+}
