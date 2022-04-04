@@ -4,6 +4,7 @@ import Prism from 'prism-react-renderer/prism'
 require('prismjs/components/prism-kotlin')
 require('prismjs/components/prism-bash')
 require('prismjs/components/prism-batch')
+require('prismjs/components/prism-powershell')
 
 export default function Nextra({ Component, pageProps }) {
   return <Component {...pageProps} />
