@@ -1,0 +1,58 @@
+# Cloudflare Warp
+## Installation
+```bash
+curl https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor --output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
+```
+Replace "focal" with your own Ubuntu release
+```bash
+echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ focal main' | sudo tee /etc/apt/sources.list.d/cloudflare-client.list
+```
+```bash
+sudo apt update
+```
+##### Install
+```bash
+sudo apt install cloudflare-warp
+```
+##### Initial Connection
+```bash
+warp-cli register
+```
+```bash
+warp-cli connect
+```
+```bash
+curl https://www.cloudflare.com/cdn-cgi/trace/ and verify that warp=on
+```
+##### Always stay connected
+```bash
+warp-cli enable-always-on
+```
+##### Another commands
+```bash
+warp-cli --help
+```
+
+## Resolving issues
+##### Checking status
+```bash
+warp-cli status
+```
+##### Showing actual settings
+```bash
+warp-cli settings
+```
+
+##### Connecting
+```bash
+warp-cli set-mode warp+dot
+```
+
+##### Desconnecting
+```bash
+warp-cli set-mode dot && warp-cli disconnect
+```
+
+
+
+Reference [here](https://askubuntu.com/questions/44921/how-to-change-shift-keypad-key-behavior)
