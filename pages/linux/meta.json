@@ -3,5 +3,6 @@
   "installing-nvm": "Installing NVM",
   "check-memory": "Check Memory Usage",
   "take-ownership": "Take Ownership",
-  "wsl": "WSL"
+  "wsl": "WSL",
+  "managing-private-keys": "Managing Private Keys"
 }

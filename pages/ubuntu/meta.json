@@ -3,5 +3,8 @@
   "enable-asus-laptop-battery-health-charging": "Enable Asus Laptop Battery Health Charging",
   "net-limiter-for-ubuntu": "Net Limiter For Ubuntu",
   "numpad-issue": "Numpad Issue",
-  "cloudflare-warp": "Cloudflare WARP"
+  "cloudflare-warp": "Cloudflare WARP",
+  "chrome-dark-mode": "Chrome Dark Mode",
+  "install-mysql-apache-phpmyadmin": "Install MySQL, Apache, phpMyAdmin",
+  "managing-snap": "Managing Snap"
 }
