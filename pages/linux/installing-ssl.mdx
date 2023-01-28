@@ -52,18 +52,24 @@ Example config file for Apache
 </VirtualHost>
 ```
 
-Example config file for Nginx (not sure)
+Example config file for Nginx
+
+Visit [digital ocean tutorial for nginx](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-20-04) if needed
 
 ```plaintext
     server    {
         listen 80;
 
+        server_name joseavila.site;
+
         root /var/www/test_domain.com/html;
+
         index index.html index.htm index.nginx.debian.html;
 
-        server_name test_domain.com www.test_domain.com;
-        location /          {
-            try_files $uri $uri/ =404;
+        location / {
+                    proxy_set_header   X-Forwarded-For $remote_addr;
+                    proxy_set_header   Host $http_host;
+                    proxy_pass         http://localhost:3000;
         }
     }
 ```
