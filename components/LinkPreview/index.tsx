@@ -12,11 +12,20 @@ const LinkPreview: FC<{ keyObj: string }> = ({ keyObj }) => {
 		<div className={styles.container}>
 			<a href={url} target="_blank" rel="noopener noreferrer">
 				<div className={styles.info}>
-					<div className={styles.title}>{title}</div>
-					<div className={styles.description}>{description}</div>
+					<div style={{ overflow: "hidden" }} className={styles.title}>
+						{title}
+					</div>
+					<div
+						style={{ overflow: "hidden" }}
+						className={styles.description}
+					>
+						{description}
+					</div>
 					<div className={styles.footer}>
 						<img className={styles.favicon} src={favicon} alt={title} />
-						<div className={styles.url}>{url}</div>
+						<div style={{ overflow: "hidden" }} className={styles.url}>
+							{url}
+						</div>
 					</div>
 				</div>
 				{image && (
