@@ -1,15 +1,17 @@
-import type { NextApiRequest, NextApiResponse } from "next";
-import { load } from "cheerio";
 import axios from "axios";
-import { LinkPreviewData } from "../../utils/fetchLinkPreview";
+import { load } from "cheerio";
 
-export default async function handler(
-	req: NextApiRequest,
-	res: NextApiResponse<LinkPreviewData | string>
-) {
+export type LinkPreviewData = {
+	url?: string | string[];
+	title?: string;
+	favicon?: string;
+	description?: string;
+	image?: string;
+	author?: string;
+};
+
+const fetchLinkPreview = async (url: string): Promise<LinkPreviewData> => {
 	try {
-		//get url to generate preview, the url will be based as a query param.
-		const { url } = req.query;
 		/*request url html document*/
 		const { data } = await axios.get(url as string);
 		//load html document in cheerio
@@ -42,11 +44,16 @@ export default async function handler(
 			author: getMetaTag("Author"),
 		};
 
-		//Send object as response
-		res.status(200).json(preview);
+		Object.keys(preview).forEach((key) => {
+			if ((preview as Record<string, unknown>)[key] === undefined) {
+				delete (preview as Record<string, unknown>)[key];
+			}
+		});
+
+		return preview;
 	} catch (error) {
-		res.status(500).json(
-			"Something went wrong, please check your internet connection and also the url you provided"
-		);
+		return {};
 	}
-}
+};
+
+export default fetchLinkPreview;

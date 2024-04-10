@@ -1,5 +1,6 @@
 import axios from "axios";
 import LinkPreview from "./../../components/LinkPreview"
+import fetchLinkPreview from "./../../utils/fetchLinkPreview"
 
 export const communicationAdapters = "communicationAdapters";
 export const hexagonalExplained = "hexagonalExplained";
@@ -8,8 +9,6 @@ export const valueObjects = "mejoraLaCalidadDeTuCodigo";
 export const understandingDtoPattern = "understandingDtoPattern";
 
 export const getStaticProps = async () => {
-	const vercelUrl = process.env.VERCEL_URL
-	const hostUrl = vercelUrl ? `https://${vercelUrl}` : "http://localhost:3000"
 	const props = {}
 
 	props[communicationAdapters] = { url: "https://stackoverflow.com/a/77818199/16753351" }
@@ -18,20 +17,15 @@ export const getStaticProps = async () => {
 	props[valueObjects] = { url: "https://www.youtube.com/watch?v=q_biZCsoloU" }
 	props[understandingDtoPattern] = { url: "https://www.youtube.com/watch?v=MAIkC9KctVw" }
 
-	let res = await axios.get(`${hostUrl}/api/fetch-link-preview?url=${props[communicationAdapters].url}`)
-	props[communicationAdapters] = res.data
+	props[communicationAdapters] = await fetchLinkPreview(props[communicationAdapters].url)
 
-	res = await axios.get(`${hostUrl}/api/fetch-link-preview?url=${props[hexagonalExplained].url}`)
-	props[hexagonalExplained] = res.data
+	props[hexagonalExplained] = await fetchLinkPreview(props[hexagonalExplained].url)
 
-	res = await axios.get(`${hostUrl}/api/fetch-link-preview?url=${props[dossierAndreas].url}`)
-	props[dossierAndreas] = res.data
+	props[dossierAndreas] = await fetchLinkPreview(props[dossierAndreas].url)
 
-	res = await axios.get(`${hostUrl}/api/fetch-link-preview?url=${props[valueObjects].url}`)
-	props[valueObjects] = res.data
+	props[valueObjects] = await fetchLinkPreview(props[valueObjects].url)
 
-	res = await axios.get(`${hostUrl}/api/fetch-link-preview?url=${props[understandingDtoPattern].url}`)
-	props[understandingDtoPattern] = res.data
+	props[understandingDtoPattern] = await fetchLinkPreview(props[understandingDtoPattern].url)
 
 	return {
 			props: {
