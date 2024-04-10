@@ -1,0 +1,74 @@
+import axios from "axios";
+import LinkPreview from "./../../components/LinkPreview"
+
+export const communicationAdapters = "communicationAdapters";
+export const hexagonalExplained = "hexagonalExplained";
+export const dossierAndreas = "dossierAndreas";
+export const valueObjects = "mejoraLaCalidadDeTuCodigo";
+export const understandingDtoPattern = "understandingDtoPattern";
+
+export const getStaticProps = async () => {
+	const props = {}
+
+	props[communicationAdapters] = { url: "https://stackoverflow.com/a/77818199/16753351" }
+	props[hexagonalExplained] = { url: "https://www.youtube.com/watch?v=92eWCQrcsvQ" }
+	props[dossierAndreas] = { url: "https://www.dossier-andreas.net/software_architecture/ports_and_adapters.html" }
+	props[valueObjects] = { url: "https://www.youtube.com/watch?v=q_biZCsoloU" }
+	props[understandingDtoPattern] = { url: "https://www.youtube.com/watch?v=MAIkC9KctVw" }
+
+	let res = await axios.get(`http://localhost:3000/api/fetch-link-preview?url=${props[communicationAdapters].url}`)
+	props[communicationAdapters] = res.data
+
+	res = await axios.get(`http://localhost:3000/api/fetch-link-preview?url=${props[hexagonalExplained].url}`)
+	props[hexagonalExplained] = res.data
+
+	res = await axios.get(`http://localhost:3000/api/fetch-link-preview?url=${props[dossierAndreas].url}`)
+	props[dossierAndreas] = res.data
+
+	res = await axios.get(`http://localhost:3000/api/fetch-link-preview?url=${props[valueObjects].url}`)
+	props[valueObjects] = res.data
+
+	res = await axios.get(`http://localhost:3000/api/fetch-link-preview?url=${props[understandingDtoPattern].url}`)
+	props[understandingDtoPattern] = res.data
+
+	return {
+			props: {
+				// We add an `ssg` field to the page props,
+				// which will be provided to the Nextra `useData` hook.
+				ssg: {
+					...props,
+				},
+			},
+			// The page will be considered as stale and regenerated every 60 seconds.
+			revalidate: 60,
+		}
+};
+
+# Hexagonal Architecture
+## Understanding ports and adapters
+<LinkPreview keyObj={communicationAdapters} />
+<LinkPreview keyObj={hexagonalExplained} />
+
+These resources talk about how a port is an interface that is implemented by adapters. In the stackoverflow answer, [Romain Goussu mentions](https://stackoverflow.com/questions/77516174/hexagonal-architecture-ports-and-adapters-communication-between-adapters#:~:text=Port%20are%20expressing%20all%20that%20in%20domain%20terms%2C%20that%20is%2C%20using%20the%20classes%2C%20dto%2C%20objects%20that%20are%20part%20of%20the%20domain):
+> Port are expressing all that in domain terms, that is, using the classes, dto, objects that are part of the domain
+
+which coincides with the comment on the YouTube video made by [Flavius Aspra](https://www.youtube.com/@FlaviusAspra):
+> A port is an interface or a collection of related interfaces. It's not necessarily just one.
+>
+> A port of the model can also contain classes: typically those classes for passing data into the model or reading data out of the model. Typically these are value objects and DTOs. Key point: these are part of the domain model, because the model is not allowed to depend on anything outside of itself.
+
+<LinkPreview keyObj={dossierAndreas} />
+
+## Understanding Value Objects
+<LinkPreview keyObj={valueObjects} />
+
+## Understanding DTOs
+<LinkPreview keyObj={understandingDtoPattern} />
+
+## Control flow
+![Control flow](https://marcolenzo.eu/content/images/wordpress/2024/02/primary-secondary-diagram.jpg)
+<span style={{ display:"block", textAlign: "center" }}>*Cortesy of marcolenzo.eu*</span>
+
+This diagram explains very easyly the workflow of an hexagonal arquitecture. We have two types of ports:
+* **Primary**: These are ports that are called by the primary adapters and communicate with the core application.
+* **Secondary**: These are ports that are called by the core application and communicate with the secondary adapters.
