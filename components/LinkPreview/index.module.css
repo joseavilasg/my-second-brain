@@ -18,6 +18,7 @@
 	padding: 12px 14px 14px;
 	flex: 4 1 180px;
 	overflow: hidden;
+	transition: all 0.2s ease;
 
 	& .title {
 		font-size: 16px;
@@ -63,6 +64,9 @@
 			text-overflow: ellipsis;
 		}
 	}
+}
+.info:hover {
+	background-color: var(--card-hover-background);
 }
 
 .image {

@@ -1,0 +1,7 @@
+:root {
+	--card-hover-background: rgba(55, 53, 47, 0.08);
+}
+
+[data-theme="dark"] {
+	--card-hover-background: rgba(255, 255, 255, 0.055);
+}
