@@ -18,17 +18,17 @@ export const getStaticProps = async () => {
 		props[key] = await fetchLinkPreview(urls[key]);
 	}
 
-return {
-			props: {
-				// We add an `ssg` field to the page props,
-				// which will be provided to the Nextra `useData` hook.
-				ssg: {
-					...props,
-				},
+	return {
+		props: {
+			// We add an `ssg` field to the page props,
+			// which will be provided to the Nextra `useData` hook.
+			ssg: {
+				...props,
 			},
-			// The page will be considered as stale and regenerated every 60 seconds.
-			revalidate: 60,
-		}
+		},
+		// The page will be considered as stale and regenerated every 60 seconds.
+		revalidate: 60,
+	}
 };
 
 # Hexagonal Architecture

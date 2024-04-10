@@ -17,14 +17,14 @@ export const getStaticProps = async () => {
 		props[key] = await fetchLinkPreview(urls[key]);
 	}
 
-return {
-			props: {
-				ssg: {
-					...props,
-				},
+	return {
+		props: {
+			ssg: {
+				...props,
 			},
-			revalidate: 60,
-		}
+		},
+		revalidate: 60,
+	}
 };
 
 # Golang
