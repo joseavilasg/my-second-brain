@@ -1,0 +1,38 @@
+import LinkPreview from "./../../components/LinkPreview"
+import fetchLinkPreview from "./../../utils/fetchLinkPreview"
+
+export const urls = {
+	dddTs: "https://github.com/Sairyss/domain-driven-hexagon",
+	verticalSlice: "https://xurxodev.com/vertical-scile/",
+	modernGo: "https://threedots.tech/series/modern-business-software-in-go",
+	modernGoRepo: "https://github.com/ThreeDotsLabs/wild-workouts-go-ddd-example",
+};
+
+export const getStaticProps = async () => {
+	const props = {}
+
+	for (const key in urls) {
+		props[key] = await fetchLinkPreview(urls[key]);
+	}
+
+return {
+			props: {
+				ssg: {
+					...props,
+				},
+			},
+			revalidate: 60,
+		}
+};
+
+# Other Resources
+
+## DDD in TypeScript
+<LinkPreview keyObj="dddTs" />
+
+## Vertical slice architecture
+<LinkPreview keyObj="verticalSlice" />
+
+## Modern applications in Go
+<LinkPreview keyObj="modernGo" />
+<LinkPreview keyObj="modernGoRepo" />

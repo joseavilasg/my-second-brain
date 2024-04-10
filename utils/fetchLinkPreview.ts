@@ -30,15 +30,24 @@ const fetchLinkPreview = async (url: string): Promise<LinkPreviewData> => {
 		};
 
 		const urlObj = new URL(url as string);
+		let favicon =
+			$('link[rel="shortcut icon"]').attr("href") ||
+			$('link[rel="alternate icon"]').attr("href") ||
+			$('link[rel="icon"]').attr("href");
+
+		if (!favicon?.includes("//") && !favicon?.includes("http")) {
+			if (favicon?.startsWith("/")) {
+				favicon = `${urlObj.protocol}//${urlObj.host}/${favicon}`;
+			} else {
+				favicon = `${urlObj.protocol}//${urlObj.host}/${urlObj.pathname}/${favicon}`;
+			}
+		}
 
 		/*Fetch values into an object */
 		const preview = {
 			url,
 			title: $("title").first().text(),
-			favicon:
-				$('link[rel="shortcut icon"]').attr("href") ||
-				$('link[rel="alternate icon"]').attr("href") ||
-				`${urlObj.protocol}//${urlObj.host}/favicon.ico`,
+			favicon: favicon || `${urlObj.protocol}//${urlObj.host}/favicon.ico`,
 			description: getMetaTag("Description"),
 			image: getMetaTag("Image"),
 			author: getMetaTag("Author"),

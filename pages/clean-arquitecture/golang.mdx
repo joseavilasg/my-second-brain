@@ -1,0 +1,46 @@
+import LinkPreview from "./../../components/LinkPreview"
+import fetchLinkPreview from "./../../utils/fetchLinkPreview"
+
+export const urls = {
+	clean: "https://webcache.googleusercontent.com/search?q=cache:https://manakuro.medium.com/clean-architecture-with-go-bce409427d31",
+	cleanRepo: "https://github.com/manakuro/golang-clean-architecture",
+	dddFramework: "https://github.com/vklap/go_ddd",
+	goEducation: "https://mehdihadeli.github.io/awesome-go-education",
+	builderPattern: "https://dsysd-dev.medium.com/building-complex-objects-in-go-a-guide-to-the-builder-pattern-1a64bc0eb3ee",
+	optionPattern: "https://dsysd-dev.medium.com/writing-better-code-in-go-with-the-option-pattern-bb9283131407",
+};
+
+export const getStaticProps = async () => {
+	const props = {}
+
+	for (const key in urls) {
+		props[key] = await fetchLinkPreview(urls[key]);
+	}
+
+return {
+			props: {
+				ssg: {
+					...props,
+				},
+			},
+			revalidate: 60,
+		}
+};
+
+# Golang
+
+## Clean arquitecture
+<LinkPreview keyObj="clean" />
+<LinkPreview keyObj="cleanRepo" />
+
+## DDD Framework
+<LinkPreview keyObj="dddFramework" />
+
+## Awesome Go Education
+<LinkPreview keyObj="goEducation" />
+
+## Builder pattern
+<LinkPreview keyObj="builderPattern" />
+
+## Option pattern
+<LinkPreview keyObj="optionPattern" />
