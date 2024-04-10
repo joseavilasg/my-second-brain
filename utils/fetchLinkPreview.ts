@@ -35,7 +35,7 @@ const fetchLinkPreview = async (url: string): Promise<LinkPreviewData> => {
 			$('link[rel="alternate icon"]').attr("href") ||
 			$('link[rel="icon"]').attr("href");
 
-		if (!favicon?.includes("//") && !favicon?.includes("http")) {
+		if (favicon?.includes("//") === false && favicon?.includes("http") === false) {
 			if (favicon?.startsWith("/")) {
 				favicon = `${urlObj.protocol}//${urlObj.host}/${favicon}`;
 			} else {
