@@ -4,7 +4,7 @@ import { DocsThemeConfig } from "nextra-theme-docs";
 const config: DocsThemeConfig = {
 	logo: (
 		<span>
-			<b>José Avila SG</b> - My Secod Brain
+			<b>José Avila SG</b> - My Second Brain
 		</span>
 	),
 	project: {
