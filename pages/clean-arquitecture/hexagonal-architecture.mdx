@@ -8,6 +8,8 @@ export const valueObjects = "mejoraLaCalidadDeTuCodigo";
 export const understandingDtoPattern = "understandingDtoPattern";
 
 export const getStaticProps = async () => {
+	const vercelUrl = process.env.VERCEL_URL
+	const hostUrl = vercelUrl ? `https://${vercelUrl}` : "http://localhost:3000"
 	const props = {}
 
 	props[communicationAdapters] = { url: "https://stackoverflow.com/a/77818199/16753351" }
@@ -16,19 +18,19 @@ export const getStaticProps = async () => {
 	props[valueObjects] = { url: "https://www.youtube.com/watch?v=q_biZCsoloU" }
 	props[understandingDtoPattern] = { url: "https://www.youtube.com/watch?v=MAIkC9KctVw" }
 
-	let res = await axios.get(`http://localhost:3000/api/fetch-link-preview?url=${props[communicationAdapters].url}`)
+	let res = await axios.get(`${hostUrl}/api/fetch-link-preview?url=${props[communicationAdapters].url}`)
 	props[communicationAdapters] = res.data
 
-	res = await axios.get(`http://localhost:3000/api/fetch-link-preview?url=${props[hexagonalExplained].url}`)
+	res = await axios.get(`${hostUrl}/api/fetch-link-preview?url=${props[hexagonalExplained].url}`)
 	props[hexagonalExplained] = res.data
 
-	res = await axios.get(`http://localhost:3000/api/fetch-link-preview?url=${props[dossierAndreas].url}`)
+	res = await axios.get(`${hostUrl}/api/fetch-link-preview?url=${props[dossierAndreas].url}`)
 	props[dossierAndreas] = res.data
 
-	res = await axios.get(`http://localhost:3000/api/fetch-link-preview?url=${props[valueObjects].url}`)
+	res = await axios.get(`${hostUrl}/api/fetch-link-preview?url=${props[valueObjects].url}`)
 	props[valueObjects] = res.data
 
-	res = await axios.get(`http://localhost:3000/api/fetch-link-preview?url=${props[understandingDtoPattern].url}`)
+	res = await axios.get(`${hostUrl}/api/fetch-link-preview?url=${props[understandingDtoPattern].url}`)
 	props[understandingDtoPattern] = res.data
 
 	return {
