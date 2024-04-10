@@ -15,7 +15,7 @@ const config: DocsThemeConfig = {
 	},
 	docsRepositoryBase: "https://github.com/joseavilasg/my-second-brain",
 	footer: {
-		text: "José Avila SG. Original template from Nextra.",
+		component: <></>,
 	},
 };
 
