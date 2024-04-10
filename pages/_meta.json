@@ -1,0 +1,21 @@
+{
+	"clean-arquitecture": "Clean Arquitecture",
+	"life-hacks": "Life Hacks",
+	"ubuntu": "Ubuntu",
+	"linux": "Linux",
+	"windows": "Windows",
+	"useful-links": "Useful Links",
+	"advanced": "Advanced",
+	"index": "Introduction",
+	"another": "Another Page",
+	"about": {
+		"title": "About",
+		"type": "page"
+	},
+	"contact": {
+		"title": "Contact ↗",
+		"type": "page",
+		"href": "https://twitter.com/joseavilasg",
+		"newWindow": true
+	}
+}

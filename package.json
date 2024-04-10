@@ -1,29 +1,32 @@
 {
-  "name": "nextra",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "my-second-brain",
+  "version": "0.0.1",
+  "description": "My Second Brain",
   "scripts": {
-    "dev": "next",
-    "start": "next start",
-    "build": "next build"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   },
-  "author": "Shu Ding",
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/joseavilasg/my-second-brain.git"
+  },
+  "author": "José Avila <joseavilasg.dev@gmail.com>",
   "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/joseavilasg/my-second-brain/issues"
+  },
+  "homepage": "https://gitlab.com/joseavilasg/my-second-brain#readme",
   "dependencies": {
-    "next": "^12.0.8",
-    "nextra": "^1.1.0",
-    "nextra-theme-docs": "^1.2.2",
-    "prism-react-renderer": "^1.2.1",
-    "prismjs": "^1.26.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "@types/react": "^18.2.75",
+    "next": "^13.0.6",
+    "nextra": "latest",
+    "nextra-theme-docs": "latest",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "prettier": "^2.0.5"
-  },
-  "prettier": {
-    "semi": false,
-    "singleQuote": true
+    "@types/node": "18.11.10",
+    "typescript": "^4.9.3"
   }
 }

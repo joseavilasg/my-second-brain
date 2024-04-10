@@ -4,7 +4,7 @@ Installing SSL in Ubuntu
 
 ## Installing Apache
 
-```bash
+```bash copy
 sudo add-apt-repository ppa:ondrej/apache2
 sudo apt update && sudo apt-get install apache2 -y
 sudo apache2ctl -v
@@ -12,7 +12,7 @@ sudo apache2ctl -v
 
 ## Installing Certbot
 
-```bash
+```bash copy
 sudo add-apt-repository ppa:certbot/certbot
 sudo apt update
 sudo apt install certbot python3-certbot-apache -y
@@ -21,7 +21,7 @@ which certbot
 
 If the above fails, execute this:
 
-```bash
+```bash copy
 sudo apt-add-repository -r ppa:certbot/certbot
 sudo apt update
 sudo apt-get update
@@ -31,7 +31,7 @@ sudo apt-get update
 
 Example config file for Apache
 
-```plaintext
+```plaintext copy
 <VirtualHost *:80>
     ServerAdmin admin@example.com
     ServerName www.example.com
@@ -56,7 +56,7 @@ Example config file for Nginx
 
 Visit [digital ocean tutorial for nginx](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-20-04) if needed
 
-```plaintext
+```plaintext copy
     server    {
         listen 80;
 
@@ -76,20 +76,20 @@ Visit [digital ocean tutorial for nginx](https://www.digitalocean.com/community/
 
 Enable apache mods
 
-```bash
+```bash copy
 sudo a2enmod proxy
 sudo a2enmod proxy_http
 ```
 
 Test configuration
 
-```bash
+```bash copy
 sudo apache2ctl configtest
 ```
 
 Reload apache
 
-```bash
+```bash copy
 sudo service apache2 reload
 ```
 
@@ -97,13 +97,13 @@ sudo service apache2 reload
 
 Init Cerbot CLI
 
-```bash
+```bash copy
 sudo certbot --apache
 ```
 
 Insert email
 
-```bash
+```bash copy
 Saving debug log to /var/log/letsencrypt/letsencrypt.log
 Plugins selected: Authenticator apache, Installer apache Enter email address (used for urgent renewal and security notices)
 
@@ -112,7 +112,7 @@ Plugins selected: Authenticator apache, Installer apache Enter email address (us
 
 Type A
 
-```bash
+```bash copy
 Please read the Terms of Service at
 https://letsencrypt.org/documents/LE-SA-v1.2-November-15-2017.pdf. You must agree in order to register with the ACME server at https://acme-v02.api.letsencrypt.org/directory
 
@@ -121,7 +121,7 @@ https://letsencrypt.org/documents/LE-SA-v1.2-November-15-2017.pdf. You must agre
 
 Type Y
 
-```bash
+```bash copy
 Would you be willing to share your email address with the Electronic Frontier Foundation, a founding partner of the Let's Encrypt project and the non-profit organization that develops Certbot? We'd like to send you email about our work encrypting the web, EFF news, campaigns, and ways to support digital freedom.
 
 (Y)es/(N)o: Y
@@ -129,7 +129,7 @@ Would you be willing to share your email address with the Electronic Frontier Fo
 
 Select domains to generate SSL
 
-```bash
+```bash copy
 Which names would you like to activate HTTPS for?
 
  1: example.com
@@ -140,7 +140,7 @@ Select the appropriate numbers separated by commas and/or spaces, or leave input
 
 Choose redirect options
 
-```bash
+```bash copy
 Please choose whether or not to redirect HTTP traffic to HTTPS, removing HTTP access.
 
  1: No redirect - Make no further changes to the webserver configuration.
@@ -151,7 +151,7 @@ Select the appropriate number [1-2] then [enter] (press 'c' to cancel): 2
 
 ## Automaticaly renewal certificate
 
-```bash
+```bash copy
 crontab -e
 @daily /usr/bin/certbot renew >> /var/log/letsencrypt-renew.log
 ```

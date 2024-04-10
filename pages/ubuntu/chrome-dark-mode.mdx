@@ -1,20 +1,20 @@
 # Chrome Dark Mode
 ##### Create a new .desktop file using Chrome's default
-```bash
+```bash copy
 cp /usr/share/applications/google-chrome.desktop ~/.local/share/applications/google-chrome.desktop
 ```
 ##### Edit the .desktop file that was just created.
-```bash
+```bash copy
 gedit ~/.local/share/applications/google-chrome.desktop
 ```
 ##### Search for Exec and append --enable-features=WebUIDarkMode --force-dark-mode to the end of the line each time it appears (about 3 times)
-```bash
+```bash copy
 # Before
 Exec=/usr/bin/google-chrome-stable %U
 ```
-```bash
+```bash copy
 # After
 Exec=/usr/bin/google-chrome-stable %U --enable-features=WebUIDarkMode --force-dark-mode
 ```
 
-Reference [here](https://askubuntu.com/a/1397293)
+Reference: [https://askubuntu.com/a/1397293](https://askubuntu.com/a/1397293)

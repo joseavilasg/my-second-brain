@@ -1,42 +1,41 @@
 # Installing NVM
 
-Installing NVM in Ubuntu
-
 ## Installing NVM on Ubuntu
-```bash
+```bash copy
 sudo apt install curl
 curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
 source ~/.profile   
 ```
+
 ## Installing Node using NVM
-```bash
+```bash copy
 sudo apt install curl
 curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
 ```
 
 ## Working with NVM
-List installed versions
-```bash
+##### List installed versions
+```bash copy
 nvm ls
 ```
 
-Available node.js version for the installation
-```bash
+##### Available node.js version for the installation
+```bash copy
 nvm ls-remote
 ```
 
-Select a node version
-```bash
+##### Select a node version
+```bash copy
 nvm use 12.18.3
 ```
 
-Find default node version
-```bash
+##### Find default node version
+```bash copy
 nvm run default --version
 ```
 
-Run node script with other node version
-```bash
+##### Run node script with other node version
+```bash copy
 nvm exec 12.18.3 server.js
 ```
 

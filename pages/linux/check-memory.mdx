@@ -1,11 +1,10 @@
 # Check memory usage in Ubuntu
-Check memory usage in Ubuntu
 
-```bash
+```bash copy
 ps -o pid,user,%mem,command ax | sort -b -k3 -r
 ```
 
 Kill process by PID
-```bash
+```bash copy
 kill -9 56743
 ```

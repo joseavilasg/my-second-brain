@@ -2,31 +2,31 @@
 ## Edit file
 ##### Go to /sys/class/power_supply/ and check if we have BAT1 or BAT0 folder.
 
-```bash
+```bash copy
 cd /sys/class/power_supply/
 ```
 
 ##### Then:
-```bash
+```bash copy
 sudo nano /sys/class/power_supply/BAT1/charge_control_end_threshold
 ```
 ##### Or:
-```bash
+```bash copy
 echo 60 | sudo tee /sys/class/power_supply/BAT1/charge_control_end_threshold
 ```
 The number represents the maximum percentage of battery charge
 
 ## Create crontab job
 ##### We have to create a crontab job, in order to preserve the configuration
-```bash
+```bash copy
 sudo nano /etc/crontab
 ```
 ##### We add this:
-```text
+```bash copy
 # Battery Charge Threshold by OS Busters
 @reboot root echo 60 > /sys/class/power_supply/BAT1/charge_control_end_threshold
 #
 ```
 
 
-Reference [here](https://www.osbusters.net/2021/01/enable-asus-battery-health-charging-in-linux-os.html)
+Reference: [https://www.osbusters.net/2021/01/enable-asus-battery-health-charging-in-linux-os.html](https://www.osbusters.net/2021/01/enable-asus-battery-health-charging-in-linux-os.html)

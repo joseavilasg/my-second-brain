@@ -1,5 +1,6 @@
 {
   "installing-ssl": "Installing SSL",
+  "nginx": "Nginx",
   "installing-nvm": "Installing NVM",
   "check-memory": "Check Memory Usage",
   "take-ownership": "Take Ownership",

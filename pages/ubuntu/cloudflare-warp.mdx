@@ -10,11 +10,11 @@ echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyr
 ```bash
 sudo apt update
 ```
-##### Install
+### Install
 ```bash
 sudo apt install cloudflare-warp
 ```
-##### Initial Connection
+### Initial Connection
 ```bash
 warp-cli register
 ```
@@ -24,32 +24,32 @@ warp-cli connect
 ```bash
 curl https://www.cloudflare.com/cdn-cgi/trace/ and verify that warp=on
 ```
-##### Always stay connected
+### Always stay connected
 ```bash
 warp-cli enable-always-on
 ```
-##### Another commands
+### Another commands
 ```bash
 warp-cli --help
 ```
 
 ## Resolving issues
-##### Checking status
+### Checking status
 ```bash
 warp-cli status
 ```
-##### Showing actual settings
+### Showing actual settings
 ```bash
 warp-cli settings
 ```
 
-##### Connecting
-```bash
+### Connecting
+```bash warp-cli set-mode dot && warp-cli disconnect
 warp-cli set-mode warp+dot
 ```
 
-##### Desconnecting
-```bash
+### Desconnecting
+```bash copy
 warp-cli set-mode dot && warp-cli disconnect
 ```
 

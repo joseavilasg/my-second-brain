@@ -1,5 +1,5 @@
 # Install MySQL, Apache, phpMyAdmin
-## Links de interés
+## Links of interest
 ##### [Digital Ocean - How to install MySQL](https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-20-04-es)
 ##### [Tuts Make - How To Install the Apache Web Server on Ubuntu 20.04](https://www.tutsmake.com/how-to-install-the-apache-web-server-on-ubuntu-20-04/)
 ##### [Digital Ocean - How to install phpMyAdmin](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-20-04-es)
@@ -7,16 +7,16 @@
 ##### [Instalación, configuración de Apache con php-fpm, con MariaDB 10.5 y el nuevo PHP 8.0](https://guidocutipa.blog.bo/instalacon-configuracion-de-apache-con-php-fpm-con-mariadb-10-5-y-el-nuevo-php-8-0/)
 ##### [Cómo ejecutar varias versiones de PHP en un servidor usando Apache y PHP-FPM en Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-run-multiple-php-versions-on-one-server-using-apache-and-php-fpm-on-ubuntu-18-04-es)
 
-## Solucionando errores
+## Troubleshooting
 ### phpMyAdmin displays text in place of login page
-```bash
+```bash copy
 sudo apt install php libapache2-mod-php
 ```
-```bash
+```bash copy
 a2enmod php7.3
 ```
-```bash
+```bash copy
 systemctl restart apache2
 ```
 
-Reference [here](https://stackoverflow.com/questions/38562090/phpmyadmin-displays-text-in-place-of-login-page)
+Reference: [https://stackoverflow.com/questions/38562090/phpmyadmin-displays-text-in-place-of-login-page](https://stackoverflow.com/questions/38562090/phpmyadmin-displays-text-in-place-of-login-page)

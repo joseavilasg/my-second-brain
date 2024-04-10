@@ -1,4 +1,4 @@
 {
-  "delete-node_modules": "Delete node_modules",
+  "delete-node-modules": "Delete node_modules",
   "convert-wsl1-to-wsl2": "Convert WSL1 to WSL 2"
 }
