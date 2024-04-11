@@ -61,3 +61,18 @@ which coincides with the comment on the YouTube video made by [Flavius Aspra](ht
 This diagram explains very easily the workflow of an hexagonal arquitecture. We have two types of ports:
 * **Primary**: These are ports that are called by the primary adapters and communicate with the core application.
 * **Secondary**: These are ports that are called by the core application and communicate with the secondary adapters.
+
+## Using Go
+On my journey to understand clean architecture, onion architecture, hexagonal architecture, domain driven design, and learning the Go,
+I found [this blog site](https://threedots.tech/series/modern-business-software-in-go) where [Miłosz](https://twitter.com/m1_10sz) and [Robert](https://twitter.com/roblaszczak) talked a lot about how to build modern Go applications, which is also stated in the next section.
+Explicitly, I've been reading [this article](https://threedots.tech/post/introducing-clean-architecture) about how they implemented ports and adapters into a real Go project that was messy.
+This was one of my first articles that I found really interesting and explicative. But looking at the code, I got really confused about how the ports and adapters were implemented. Which lead me to do all the research that I posted above.
+Now I finally understand what they did. They even explained it in the article, but I didn't understand it at the time:
+
+>You might be confused about the ports and adapters. We messed up and picked the same names for different things (even if they fit well).
+>
+>Our ports are Hexagonal Architecture’s Primary Adapters.
+>Our adapters are Hexagonal Architecture’s Secondary Adapters.
+>The idea stays the same. We find the original primary/secondary naming hard to grasp, so feel free to use what works for you. You could use gateways, entry points, interfaces, infrastructure, and so on. Just make sure it’s consistent and your team is aware what goes where.
+>
+>What about the original ports? Thanks to Go’s implicit interfaces, we see no value in keeping a dedicated layer of them. We keep the interfaces close to where they’re used (see below).
