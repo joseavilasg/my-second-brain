@@ -13,7 +13,12 @@ export type LinkPreviewData = {
 const fetchLinkPreview = async (url: string): Promise<LinkPreviewData> => {
 	try {
 		/*request url html document*/
-		const { data } = await axios.get(url as string);
+		const { data } = (await axios.get(url as string, {
+			headers: {
+				Accept: "text/html",
+				"User-Agent": "Axios Client",
+			}
+		}));
 		//load html document in cheerio
 		const $ = load(data);
 
@@ -54,7 +59,8 @@ const fetchLinkPreview = async (url: string): Promise<LinkPreviewData> => {
 		};
 
 		Object.keys(preview).forEach((key) => {
-			if ((preview as Record<string, unknown>)[key] === undefined) {
+			const value = (preview as Record<string, unknown>)[key];
+			if ( value === undefined || value === "") {
 				delete (preview as Record<string, unknown>)[key];
 			}
 		});
