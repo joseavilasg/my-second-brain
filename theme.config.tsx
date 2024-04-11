@@ -36,6 +36,8 @@ const config: DocsThemeConfig = {
 			<a
 				className={className}
 				href={`https://github.com/joseavilasg/my-second-brain/tree/main/${filePath}`}
+				target="_blank"
+				rel="noopener noreferrer"
 			>
 				{children}
 			</a>
