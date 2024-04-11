@@ -85,6 +85,8 @@
 	.container a {
 		flex-direction: column-reverse;
 		height: auto;
+		max-height: -moz-fit-content;
+		max-height: fit-content;
 	}
 
 	.info,
