@@ -1,0 +1,42 @@
+# Setup Storage
+```bash copy
+termux-setup-storage
+```
+
+Everything will be in the `storage` directory.
+```bash copy
+cd ~/storage
+```
+
+# Setup simulated access to root (also fix issue with internet connection)
+1. First install proot
+```bash copy
+pkg install proot -y
+```
+
+2. Execute
+```bash copy
+termux-chroot
+```
+
+# Fix issue with SSL certs
+1. Create missing directory
+```bash copy
+mkdir -p /etc/ssl/certs
+```
+
+2. Copy certs
+```bash copy
+cp -r /etc/tls/* /etc/ssl/certs
+```
+
+# Setup sdcard access
+1. Run the following command to get the sdcard path and create a symlink
+```bash copy
+ln -s $(df -H | grep -o "/storage/....-....") ~/storage/sdcard
+```
+
+2. Now you can access the sdcard with
+```bash copy
+cd ~/storage/sdcard
+```
