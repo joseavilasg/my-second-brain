@@ -1,4 +1,5 @@
 {
+  "sync-clock": "Sync clock",
   "change-fan-mode-for-asus": "Change fan mode for ASUS",
   "enable-asus-laptop-battery-health-charging": "Enable Asus Laptop Battery Health Charging",
   "net-limiter-for-ubuntu": "Net Limiter For Ubuntu",

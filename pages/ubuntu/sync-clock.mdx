@@ -1,0 +1,22 @@
+# Sync clock
+
+```bash copy
+sudo apt-get install -y ntp
+sudo timedatectl set-ntp on
+sudo service ntp restart
+sudo service ntp status | cat
+sudo timedatectl status
+```
+
+The last command will display something like:
+```bash
+               Local time: Sun 2024-12-01 05:46:01 UTC
+           Universal time: Sun 2024-12-01 05:46:01 UTC
+                 RTC time: Sun 2024-12-01 05:46:01
+                Time zone: Etc/UTC (UTC, +0000)
+System clock synchronized: yes
+              NTP service: n/a
+          RTC in local TZ: no
+```
+
+Reference: [https://askubuntu.com/questions/1009729/unable-to-start-ntpd-service](https://askubuntu.com/questions/1009729/unable-to-start-ntpd-service)
