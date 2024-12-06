@@ -1,0 +1,36 @@
+import LinkPreview from "../../components/LinkPreview"
+import fetchLinkPreview from "../../utils/fetchLinkPreview"
+
+export const urls = {
+  svgl: "https://svgl.app",
+  shots: "https://shots.so",
+  squoosh: "https://squoosh.app",
+  uicolors: "https://uicolors.app/create",
+};
+
+export const getStaticProps = async () => {
+  const props = {}
+
+  for (const key in urls) {
+    props[key] = await fetchLinkPreview(urls[key]);
+  }
+
+  return {
+    props: {
+      // We add an `ssg` field to the page props,
+      // which will be provided to the Nextra `useData` hook.
+      ssg: {
+        ...props,
+      },
+    },
+    // The page will be considered as stale and regenerated every 60 seconds.
+    revalidate: 60,
+  }
+};
+
+# Web Development Resources
+
+<LinkPreview keyObj="svgl" />
+<LinkPreview keyObj="shots" />
+<LinkPreview keyObj="squoosh" />
+<LinkPreview keyObj="uicolors" />

@@ -1,0 +1,9 @@
+# cPanel
+
+#### Permanent redirection for HTTPS from non-www to www
+```text copy
+RewriteEngine On
+RewriteCond %{HTTPS} on
+RewriteCond %{HTTP_HOST} ^domain\.com\.pe$ [NC]
+RewriteRule ^(.*)$ https://www.domain.com.pe/$1 [L,R=301]
+```
